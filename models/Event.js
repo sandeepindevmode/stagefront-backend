@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+
+      const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema(
   {
@@ -55,6 +56,16 @@ const EventSchema = new mongoose.Schema(
     image: {
       type: String,
       default: '🎵'
+    },
+    posterUrl: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    artistPhotoUrl: {
+      type: String,
+      trim: true,
+      default: ''
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

@@ -108,18 +108,11 @@ router.post(
     }
 
     try {
-      const { title, artist, dateTime, location, description, ticketLink, genre, price, image } = req.body;
+      const { title, artist, dateTime, location, description, ticketLink, genre, price, image, posterUrl, artistPhotoUrl } = req.body;
 
       const event = await Event.create({
-        title,
-        artist,
-        dateTime,
-        location,
-        description,
-        ticketLink,
-        genre,
-        price,
-        image,
+        title, artist, dateTime, location, description,
+        ticketLink, genre, price, image, posterUrl, artistPhotoUrl,
         createdBy: req.user._id
       });
 
@@ -154,7 +147,7 @@ router.put('/:id', protect, async (req, res) => {
       return res.status(403).json({ success: false, message: 'Not authorized to update this event' });
     }
 
-    const allowedFields = ['title', 'artist', 'dateTime', 'location', 'description', 'ticketLink', 'genre', 'price', 'image'];
+    const allowedFields = ['title', 'artist', 'dateTime', 'location', 'description', 'ticketLink', 'genre', 'price', 'image', 'posterUrl', 'artistPhotoUrl'];
     const updates = {};
     allowedFields.forEach(f => { if (req.body[f] !== undefined) updates[f] = req.body[f]; });
 
